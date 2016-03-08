@@ -1,2 +1,6 @@
-<h1>Authentication#login</h1>
-<p>Find me in app/views/authentication/login.html.erb</p>
+<h1>Please enter your email and password</h1>
+<%= form_tag %>
+  <p><%= email_field_tag :email %></p>
+  <p><%= password_field_tag :password %></p>
+
+<% end %>
