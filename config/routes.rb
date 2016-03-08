@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'user/login'
 
-  get 'user/logout'
+  post 'authentication/login'
+
+  get 'authentication/logout'
 
   resources :teachers
   # The priority is based upon order of creation: first created -> highest priority.
