@@ -1,18 +1,22 @@
 class AuthenticationController < ApplicationController
-  def login
-    if request.post?
-      user = Teacher.find_by(email: params[:email])
-      if user && user.authenticate(params[:password])
-        session[:user_id] = user.id
-        redirect_to teachers_path, notice: "You're logged in."
-      else
-        flash[:notice] = "Invalid email or password."
-      end
+
+  def create
+    teacher = Teacher.find_by_email(params[:email])
+    if teacher && teacher.authenticate(params[:password])
+      session[:user_id] = teacher.id
+      session[:user_type] = "Teacher"
+
+      redirect_to root_path, notice: "You have succesfully logged in!"
+    else
+      flash.now[:alert] = "Login failed: invalid email or password."
+      render "new"
     end
   end
 
-  def logout
-    session[:user_id] = nil
-    redirect_to authentication_login_path, notice: "Thanks for stopping by."
-  end
+  def destroy
+     session[:user_id] = nil
+     session[:user_type] = nil
+     redirect_to login_path, notice: "You have logged out."
+   end
+   
 end
