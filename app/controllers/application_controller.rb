@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   private def authenticate
     if session[:user_id].nil?
       redirect_to authentication_login_path, notice: "You have to login first."
+      # add an unless session[with all the different ids] or do session[:user_id]
     end
   end
 end

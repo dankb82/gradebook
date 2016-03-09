@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :parents
   resources :students
   resources :grades
   get 'authentication/login'
