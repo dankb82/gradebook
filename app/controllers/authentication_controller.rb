@@ -12,5 +12,7 @@ class AuthenticationController < ApplicationController
   end
 
   def logout
+    session[:user_id] = nil
+    redirect_to authentication_login_path, notice: "Thanks for stopping by."
   end
 end
