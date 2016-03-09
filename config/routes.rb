@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :students
+  resources :grades
   get 'authentication/login'
   post 'authentication/login'
   get 'authentication/logout'
