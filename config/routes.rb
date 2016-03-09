@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  post 'authentication/login'
+  get 'authentication/login'
 
   get 'authentication/logout'
 
