@@ -25,6 +25,7 @@
 <br>
 
 <%= link_to 'New Teacher', new_teacher_path %>
-<%= link_to 'Student info', students_path %>
-<%= link_to 'Grade manager', new_grade_path %>
+<%= link_to 'Student Info', students_path %>
+<%= link_to 'Grade Manager', new_grade_path %>
+<%= link_to 'Assign Parent', new_parent_path %>
 <%= link_to 'Log Out', logout_path, method: :delete if session[:user_id] %>
