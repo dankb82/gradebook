@@ -19,8 +19,6 @@
       <tr>
         <td><%= student.name %></td>
         <td><%= student.email %></td>
-        <!-- <td><%= student.password_digest %></td> -->
-        <td><%= student.parent_id %></td>
         <td><%= student.teacher_id %></td>
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
@@ -33,4 +31,4 @@
 <br>
 
 <%= link_to 'New Student', new_student_path %>
-<%= link_to 'Log Out', authentication_logout_path %>
+<%= link_to 'Log Out', logout_path, method: :delete if session[:user_id] %>

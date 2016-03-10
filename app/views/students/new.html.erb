@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to 'Back', students_path %>
-<%= link_to 'Log Out', authentication_logout_path %>
+<%= link_to 'Log Out', logout_path, method: :delete if session[:user_id] %>

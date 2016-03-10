@@ -1,10 +1,12 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
+ before_action :authenticate
+ before_action :authenticated_as_teacher?
 
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    @students = Student.where("#{session[:user_type].downcase}_id" => session[:user_id])
   end
 
   # GET /students/1
@@ -14,7 +16,7 @@ class StudentsController < ApplicationController
 
   # GET /students/new
   def new
-    @student = Student.new
+     @student = Student.new(teacher_id: session[:user_id])
   end
 
   # GET /students/1/edit
@@ -69,6 +71,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:name, :email, :password_digest, :parent_id, :teacher_id)
+      params.require(:student).permit(:name, :email, :teacher_id, :password)
     end
 end
