@@ -1,12 +1,12 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:show, :edit, :update, :destroy]
- before_action :authenticate
- before_action :authenticated_as_teacher?
+before_action :set_student, only: [:show, :edit, :update, :destroy]
+before_action :authenticate
+
 
   # GET /students
   # GET /students.json
   def index
-    @students = Student.where("#{session[:user_type].downcase}_id" => session[:user_id])
+     @students = Student.where(teacher_id: session[:user_id])
   end
 
   # GET /students/1
